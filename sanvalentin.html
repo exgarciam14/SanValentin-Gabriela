@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación Especial ❤️</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* ========== PANTALLA 1: PREGUNTA ========== */
+    #pantalla1 {
+        background: linear-gradient(135deg, #ff4e8b, #ff9a9e);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+    }
+
+    .container-pregunta {
+        background: rgba(0,0,0,0.3);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        width: 90%;
+        max-width: 420px;
+        position: relative;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 10px;
+        transition: 0.3s ease;
+    }
+
+    #yesBtn {
+        background-color: white;
+        color: #ff4e8b;
+        font-weight: bold;
+    }
+
+    #yesBtn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+    }
+
+    #noBtn {
+        background-color: #333;
+        color: white;
+        position: absolute;
+    }
+
+    #noBtn:hover {
+        background-color: #555;
+    }
+
+    /* ========== PANTALLA 2: GRACIAS ========== */
+    #pantalla2 {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 78, 139, 0.7), rgba(255, 154, 158, 0.7)), url('fondo.jpg');
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.8);
+        z-index: -1;
+    }
+
+    .pantalla2-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .container-gracias {
+        text-align: center;
+        padding: 50px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        max-width: 600px;
+        animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .texto-gracias {
+        font-size: 120px;
+        color: white;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+        margin-bottom: 30px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        animation: pulse 2s infinite;
+        font-family: Georgia, serif;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    .mensaje {
+        font-size: 28px;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .corazones {
+        font-size: 60px;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    .heart {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 30px;
+        animation: floating 6s infinite ease-in-out;
+    }
+
+    @keyframes floating {
+        0% {
+            transform: translateY(100vh) rotate(0deg);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+    .heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+    .heart:nth-child(4) { left: 70%; animation-delay: 1s; }
+    .heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+    @media (max-width: 768px) {
+        .texto-gracias {
+            font-size: 80px;
+        }
+        .mensaje {
+            font-size: 22px;
+        }
+        .container-gracias {
+            padding: 30px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div id="pantalla1">
+        <div class="container-pregunta">
+            <h1>¿Quieres ser mi San Valentín? 💘</h1>
+            <button id="yesBtn">SÍ ❤️</button>
+            <button id="noBtn">NO 😢</button>
+        </div>
+    </div>
+
+    <div id="pantalla2">
+        <div class="background"></div>
+        
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">💗</div>
+        <div class="heart">💖</div>
+        <div class="heart">💝</div>
+
+        <div class="pantalla2-content">
+            <div class="container-gracias">
+                <div class="texto-gracias">Gracias</div>
+                <div class="mensaje">
+                    Por aceptar ser mi San Valentín 💘<br>
+                    Eres lo mejor que me ha pasado
+                </div>
+                <div class="corazones">💕 ❤️ 💕</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const pantalla1 = document.getElementById("pantalla1");
+        const pantalla2 = document.getElementById("pantalla2");
+
+        noBtn.addEventListener("click", () => {
+            const container = document.querySelector(".container-pregunta");
+            const maxX = container.offsetWidth - noBtn.offsetWidth - 20;
+            const maxY = container.offsetHeight - noBtn.offsetHeight - 20;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        });
+
+        yesBtn.addEventListener("click", () => {
+            pantalla1.style.display = "none";
+            pantalla2.style.display = "block";
+            
+            setTimeout(() => {
+                const container = document.querySelector('.container-gracias');
+                container.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    container.style.transform = 'scale(1)';
+                }, 300);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
